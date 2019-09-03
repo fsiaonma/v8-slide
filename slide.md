@@ -6,11 +6,8 @@ speaker: junhaoxian
 <slide class="bg-white aligncenter">
 # **V8引擎 与 Javacript**
 
-<!-- <slide class="aligncenter">
-介绍为什么要讲这个主题：
-因为优化集中于，渲染，接口，DB，效果显著，有着非常低的投入产出比。
-优化代码没意义，但形成代码习惯就有意义，日积月累便会见效果。
- -->
+<slide class="bg-white aligncenter">
+# **习惯 > 优化**
 
 <slide class="bg-white aligncenter">
 ## **对象 -- Object** {.animated.fadeInUp.delay-200 }
@@ -63,6 +60,8 @@ for (let i = 0; i < 10000000; ++i) {
 ![](./images/1-1.png)
 
 <slide class="bg-white size-50 aligncenter">
+### **properties 与 elements**
+---
 
 ``` javascript
 const obj = {};
@@ -71,6 +70,8 @@ const obj = {};
 
 
 <slide class="bg-white size-50 aligncenter">
+### **properties 与 elements**
+---
 
 ``` javascript
 const obj = {};
@@ -82,6 +83,8 @@ obj.z = 3;
 ![](./images/3.png)
 
 <slide class="bg-white size-50 aligncenter">
+### **properties 与 elements**
+---
 
 ``` javascript
 const obj = {};
@@ -96,6 +99,8 @@ obj[1] = "b";
 ![](./images/4.png)
 
 <slide class="bg-white size-50 aligncenter">
+### **properties 与 elements**
+---
 
 ``` javascript
 const obj = {};
@@ -110,19 +115,22 @@ obj[1] = "b";
 obj.a = "a";
 obj.b = "b";
 obj.c = "c";
-````
-
+```
 ![](./images/5.png)
 
 <slide class="bg-white size-80 aligncenter">
-# **结构描述器 -- 隐藏类**
+# **结构描述器（\<Map\>） -- 隐藏类**
 
 <slide class="bg-white size-80 aligncenter">
+### **结构描述器（\<Map\>） -- 隐藏类**
+---
 ![](./images/6.png)
 
-<slide class="bg-white size-50 aligncenter">
-#### **字典模式：instance_descriptors**
+<slide class="bg-white size-80 aligncenter">
+### **结构描述器（\<Map\>） -- 隐藏类**
+---
 
+#### **字典模式：instance_descriptors**
 ---
 
 ``` javascript
@@ -130,38 +138,54 @@ const obj = {}
 obj.x = 1;
 obj.y = 2;
 obj.z = 3;
-````
+```
 
 ---
 
 ![](./images/7.png)
 
 <slide class="bg-white size-80 aligncenter">
-#### **快速模式：instance_descriptors + raw_transitions**
+### **结构描述器（\<Map\>） -- 隐藏类**
+---
 
+#### **快速模式：instance_descriptors + raw_transitions**
 ---
 
 ![](./images/8.png)
 
 <slide class="bg-white size-80 aligncenter">
+### **结构描述器（\<Map\>） -- 隐藏类**
+---
 ![](./images/9.png)
 
 <slide class="bg-white size-80 aligncenter">
+### **结构描述器（\<Map\>） -- 隐藏类**
+---
 ![](./images/10.png)
 
 <slide class="bg-white size-80 aligncenter">
+### **结构描述器（\<Map\>） -- 隐藏类**
+---
 ![](./images/11.png)
 
 <slide class="bg-white size-80 aligncenter">
+### **结构描述器（\<Map\>） -- 隐藏类**
+---
 ![](./images/12.png)
 
 <slide class="bg-white size-80 aligncenter">
+### **结构描述器（\<Map\>） -- 隐藏类**
+---
 ![](./images/13.png)
 
 <slide class="bg-white size-80 aligncenter">
+### **结构描述器（\<Map\>） -- 隐藏类**
+---
 ![](./images/14.png)
 
 <slide class="bg-white size-80 aligncenter">
+### **结构描述器（\<Map\>） -- 隐藏类**
+---
 ![](./images/15.png)
 
 <slide class="bg-white size-80 aligncenter">
@@ -235,7 +259,7 @@ arr.sort();
 * #### 数组数量小于等于10个 -- 插入排序
 * #### 数组数量小于等于10个 -- 快速排序
 
-<slide class="bg-white size-50 aligncenter">
+<slide class="bg-white size-80 aligncenter">
 # **数组排序 -- 连续 or 缺省**
 ---
 
@@ -250,14 +274,11 @@ o.__proto__ = {1: "B"};
 console.log(o[1]);
 ```
 
-<slide class="bg-white size-50 aligncenter">
+<slide class="bg-white aligncenter">
 # **数组排序 -- 连续 or 缺省**
 ---
 
 #### 缺省时会增加访问原型链流程
-
-<slide class="bg-white aligncenter">
-# **数组排序 -- 连续 or 缺省**
 ---
 
 ![](./images/16.png)
@@ -297,7 +318,7 @@ for (let i = 0; i < LIMIT; ++i) {
 ---
 
 * #### 连续数组 V8 会以紧凑型数组存储，性能较好。 --- 快速模式
-* #### 缺省数组，空洞数量达到一定时，V8会牺牲性能换空间，切换至 Map 存储。 --- 字典模式
+* #### 缺省数组，空洞数量过多时，V8会用空间换性能，切换至 Map 存储。 --- 字典模式
 
 <slide class="bg-white aligncenter">
 # **Array 总结和建议**
