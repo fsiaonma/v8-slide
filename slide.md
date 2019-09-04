@@ -233,10 +233,10 @@ const arr = [];
 for (let i = 0; i < 10; ++i) {
   arr.push({
     id: i,
-    score: i
+    score: 10
   });
 }
-arr.sort();
+arr.sort((a, b) => a.score > b.score);
 ```
 ---
 
@@ -246,10 +246,10 @@ const arr = [];
 for (let i = 0; i < 11; ++i) {
   arr.push({
     id: i,
-    score: i
+    score: 10
   });
 }
-arr.sort();
+arr.sort((a, b) => a.score > b.score);
 ```
 
 <slide class="bg-white size-50 aligncenter">
@@ -260,9 +260,39 @@ arr.sort();
 * #### 数组数量小于等于10个 -- 快速排序
 
 <slide class="bg-white size-80 aligncenter">
-# **数组排序 -- 连续 or 缺省**
+# **数组 -- 连续 or 缺省**
 ---
 
+``` javascript
+const LIMIT = 100000000;
+
+const arr1 = [];
+for (let i = 0; i < LIMIT; ++i) {
+ arr1.push(1);
+}
+for (let i = 0; i < LIMIT; ++i) {
+ const a = arr1[i];
+}
+```
+
+---
+
+``` javascript
+const LIMIT = 100000000;
+
+const arr2 = [];
+arr2[LIMIT - 1] = 1;
+
+for (let i = 0; i < LIMIT; ++i) {
+ const a = arr2[i];
+}
+```
+
+<slide class="bg-white size-80 aligncenter">
+# **数组 -- 连续 or 缺省**
+---
+
+#### 缺省时会增加访问原型链流程
 ``` javascript
 const o = ["a", "b", "c"];
 console.log(o[1]);
@@ -274,47 +304,10 @@ o.__proto__ = {1: "B"};
 console.log(o[1]);
 ```
 
-<slide class="bg-white aligncenter">
-# **数组排序 -- 连续 or 缺省**
----
-
-#### 缺省时会增加访问原型链流程
----
-
 ![](./images/16.png)
 
-<slide class="bg-white size-80 aligncenter">
-# **数组排序 -- 快速模式 or 字典模式**
----
-
-``` javascript
-const LIMIT = 100000000;
-
-const arr = [];
-for (let i = 0; i < LIMIT; ++i) {
- arr.push(1);
-}
-for (let i = 0; i < LIMIT; ++i) {
- const a = arr[i];
-}
-
-```
-
----
-
-``` javascript
-const LIMIT = 100000000;
-
-const arr = [];
-arr[LIMIT - 1] = 1;
-
-for (let i = 0; i < LIMIT; ++i) {
- const a = arr[i];
-}
-```
-
 <slide class="bg-white aligncenter">
-# **数组排序 -- 快速模式 or 字典模式**
+# **数组 -- 连续 or 缺省**
 ---
 
 * #### 连续数组 V8 会以紧凑型数组存储，性能较好。 --- 快速模式
@@ -331,6 +324,8 @@ for (let i = 0; i < LIMIT; ++i) {
 # **方法 -- Function**
 
 <slide class="bg-white size-80 aligncenter">
+#### **方法 -- Function**
+---
 
 ``` javascript
 const arr1 = [];
